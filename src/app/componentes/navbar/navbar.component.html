@@ -1,0 +1,32 @@
+<section id="navbar">
+  <nav>
+    <div class="icon"><p>CLOTHESSTORE</p></div>
+    <div class="search-box">
+      <input type="search" placeholder="Buscar aqui producto" />
+      <span class="fa fa-search"></span>
+    </div>
+    <ol>
+      <li>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+        <a href="#" class="desaparece"><i class="fas fa-user"></i></a>
+        <a href="#" class="desaparece"
+          ><button class="iniciarSesion">Iniciar Sesion</button></a
+        >
+      </li>
+    </ol>
+    <label for="" class="bar">
+      <span class="fa fa-bars" id="bars" (click)="mostrarMenu()"></span>
+    </label>
+  </nav>
+
+  <nav class="menu2">
+    <ol>
+      <li><a href="#" [ngClass]="{ desaparece: mostrar }">Hombre</a></li>
+      <li><a href="#" [ngClass]="{ desaparece: mostrar }">Mujer</a></li>
+      <li><a href="#" [ngClass]="{ desaparece: mostrar }">Junior</a></li>
+      <li><a href="#" [ngClass]="{ desaparece: mostrar }">Niños</a></li>
+      <li><a href="#" [ngClass]="{ desaparece: mostrar }">Accesorios</a></li>
+      <li><a href="#" [ngClass]="{ desaparece: mostrar }">Ofertas</a></li>
+    </ol>
+  </nav>
+</section>

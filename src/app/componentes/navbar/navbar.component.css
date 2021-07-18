@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  position: relative;
+  justify-content: space-between;
+  text-align: center;
+  padding: 15px 30px;
+}
+
+nav .icon {
+  font-size: 35px;
+  font-weight: 800;
+  color: black;
+  cursor: pointer;
+}
+
+nav .icon p {
+  font-family: "Fjalla One", sans-serif;
+  text-transform: capitalize;
+}
+
+nav ol {
+  display: flex;
+  list-style: none;
+  margin: auto 0;
+}
+
+nav ol li {
+  margin: 0 2px;
+}
+
+nav ol li a {
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+}
+
+nav ol li a .iniciarSesion {
+  top: 46px;
+  left: 1632px;
+  width: 148px;
+  height: 44px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #000000;
+  opacity: 1;
+}
+
+nav ol li a .iniciarSesion:active {
+  background: #eeeeee 0% 0% no-repeat padding-box;
+}
+
+nav ol li:hover a {
+  background-color: aliceblue;
+  color: black;
+}
+
+nav .search-box {
+  display: flex;
+  margin: auto 0;
+  height: 35px;
+  line-height: 35px;
+}
+
+nav .search-box input {
+  background-color: #eeeeee;
+  color: #6b6b6b;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 10px;
+  font-size: 20px;
+  width: 350px;
+}
+
+nav .search-box span {
+  background-color: #dedede;
+  font-size: 20px;
+  color: black;
+  height: 100%;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+nav .search-box span:hover {
+  color: #a8a8a8;
+}
+
+nav .search-box span::after {
+  height: 100%;
+  width: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  transition: 0.3s;
+}
+
+nav .bar {
+  position: relative;
+  margin: auto;
+  display: none;
+  color: black;
+}
+
+nav .bar span {
+  position: absolute;
+  color: #a8a8a8;
+  font-size: 35px;
+}
+
+.menu2 {
+  background: black;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu2 ol li a {
+  color: white;
+}
+
+@media screen and (max-width: 751px) {
+  #navbar {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+  }
+  nav {
+    display: block;
+    padding: 0;
+  }
+
+  nav .icon {
+    display: inline-block;
+    padding: 15px 30px;
+  }
+
+  nav .search-box {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  nav .search-box input {
+    width: 90%;
+  }
+
+  nav ol {
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav ol li {
+    text-align: center;
+  }
+
+  nav ol li a {
+    color: black;
+    font-size: 28px;
+    padding: 25px;
+    display: block;
+  }
+
+  nav .bar {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    cursor: pointer;
+  }
+
+  nav ol li .desaparece {
+    display: none;
+  }
+
+  .menu2 {
+    background: white;
+  }
+
+  .menu2 ol li a {
+    color: black;
+  }
+}
