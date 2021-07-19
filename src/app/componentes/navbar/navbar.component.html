@@ -2,8 +2,12 @@
   <nav>
     <div class="icon"><p>CLOTHESSTORE</p></div>
     <div class="search-box">
-      <input type="search" placeholder="Buscar aqui producto" />
-      <span class="fa fa-search"></span>
+      <input
+        [(ngModel)]="buscar"
+        type="search"
+        placeholder="Buscar aqui producto"
+      />
+      <span (click)="hacerBusqueda()" class="fa fa-search"></span>
     </div>
     <ol>
       <li>

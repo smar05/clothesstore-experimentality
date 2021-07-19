@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/servicios/api.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   public mostrar: boolean;
+  public buscar: string = '';
 
-  constructor() {
+  constructor(private servicio: ApiService, private router: Router) {
     this.mostrar = true;
   }
 
@@ -16,5 +19,13 @@ export class NavbarComponent implements OnInit {
 
   public mostrarMenu(): void {
     this.mostrar = !this.mostrar;
+  }
+
+  public hacerBusqueda(): void {
+    if (this.buscar != '') {
+      this.router.navigate(['/resultados-de-busqueda', this.buscar]);
+    } else {
+      alert('Ingrese una busqueda');
+    }
   }
 }

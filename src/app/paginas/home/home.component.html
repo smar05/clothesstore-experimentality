@@ -1,67 +1,42 @@
-<section id="productos">
-  <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header">
-          <img src="../../../assets/img/fn2bnZ.png" alt="" />
-        </div>
-        <div class="card-content">
-          <h4>Blusa color solido manga larga talla M</h4>
-          <div class="precios">
-            <p class="precio">$200.452</p>
-            <p class="precio2">$100.452</p>
-          </div>
-          <button class="agregarCarrito"><p>Agregar Carrito</p></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header">
-          <img src="../../../assets/img/vwfphY.png" alt="" />
-        </div>
-        <div class="card-content">
-          <h4>Pantalon silueta skinny color solido</h4>
-          <div class="precios">
-            <p class="precio">$200.452</p>
-            <p class="precio2">$100.452</p>
-          </div>
-          <button class="agregarCarrito"><p>Agregar Carrito</p></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header">
-          <img src="../../../assets/img/AK5Eyw.png" alt="" />
-        </div>
-        <div class="card-content">
-          <h4>Enterizo estampado flores tropical</h4>
-          <div class="precios">
-            <p class="precio">$200.452</p>
-            <p class="precio2">$100.452</p>
-          </div>
-          <button class="agregarCarrito"><p>Agregar Carrito</p></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header">
-          <img src="../../../assets/img/Ps96Iq.png" alt="" />
-        </div>
-        <div class="card-content">
-          <h4>Blusa asimetrica escote profundo</h4>
-          <div class="precios">
-            <p class="precio">$200.452</p>
-            <p class="precio2">$100.452</p>
-          </div>
-          <button class="agregarCarrito"><p>Agregar Carrito</p></button>
-        </div>
-      </div>
-    </div>
+<section id="loading" *ngIf="loading">
+  <div class="sk-cube-grid">
+    <div class="sk-cube sk-cube1"></div>
+    <div class="sk-cube sk-cube2"></div>
+    <div class="sk-cube sk-cube3"></div>
+    <div class="sk-cube sk-cube4"></div>
+    <div class="sk-cube sk-cube5"></div>
+    <div class="sk-cube sk-cube6"></div>
+    <div class="sk-cube sk-cube7"></div>
+    <div class="sk-cube sk-cube8"></div>
+    <div class="sk-cube sk-cube9"></div>
   </div>
+</section>
+
+<section id="productos">
+  <h1>Publicaciones destacadas</h1>
+  <ul id="autoWidth" class="cs-hidden">
+    <li class="item-a" *ngFor="let publicacion of publicacionesDestacadas">
+      <a [href]="publicacion.permalink">
+        <div class="box">
+          <div class="slide-img">
+            <img [src]="publicacion.thumbnail" alt="" />
+            <div class="overlay">
+              <a href="#" class="buy-btn"></a>
+            </div>
+          </div>
+          <div class="detail-box">
+            <div class="type">
+              <a href="#">{{ publicacion.title }}</a>
+              <span *ngIf="publicacion.shipping.free_shipping"
+                >ENVIO GRATIS</span
+              >
+            </div>
+            <a href="#" class="price">{{
+              publicacion.price | currency: "$":true:"1.0-0"
+            }}</a>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
 </section>
