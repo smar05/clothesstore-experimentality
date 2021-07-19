@@ -12,8 +12,8 @@
   </div>
 </section>
 
-<section id="productos">
-  <h1>Publicaciones destacadas</h1>
+<section id="productos" *ngIf="!loading">
+  <h1 class="titulo-destacado">Publicaciones destacadas</h1>
   <ul id="autoWidth" class="cs-hidden">
     <li class="item-a" *ngFor="let publicacion of publicacionesDestacadas">
       <a [href]="publicacion.permalink">

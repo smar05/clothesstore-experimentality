@@ -15,17 +15,28 @@ export class ApiService {
     Authorization: 'Bearer NMaEapX6CAvGF4wijG8ODM4NFnI4dUVe',
   });
 
+  public contador: number = 0;
+
   constructor(private http: HttpClient) {}
 
-  public getCategoria(busqueda: string): Promise<any> {
-    var urlBusqueda = this.urlCategorias + busqueda + '&limit=4';
+  public getBusqueda(busqueda: string, parametro: string): Promise<any> {
+    var urlBusqueda = '';
+    if (parametro == 'categoria') {
+      urlBusqueda = this.urlCategorias + busqueda + '&limit=4';
+    } else if (parametro == 'busqueda') {
+      urlBusqueda = this.urlItems + busqueda;
+    }
     return this.http
       .get(urlBusqueda, { headers: this.httpHeaders })
       .toPromise();
   }
 
-  public getBusqueda(busqueda: string): Promise<any> {
-    var urlBusqueda = this.urlItems + busqueda;
+  public masPublicaciones(busqueda: string): Promise<any> {
+    var urlBusqueda = '';
+    console.log(busqueda);
+
+    this.contador += 51;
+    urlBusqueda = `${this.urlCategorias + busqueda}&offset=${this.contador}`;
     return this.http
       .get(urlBusqueda, { headers: this.httpHeaders })
       .toPromise();

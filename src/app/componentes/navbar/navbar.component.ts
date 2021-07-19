@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   public mostrar: boolean;
   public buscar: string = '';
 
-  constructor(private servicio: ApiService, private router: Router) {
+  constructor(private router: Router) {
     this.mostrar = true;
   }
 
@@ -23,7 +23,10 @@ export class NavbarComponent implements OnInit {
 
   public hacerBusqueda(): void {
     if (this.buscar != '') {
-      this.router.navigate(['/resultados-de-busqueda', this.buscar]);
+      this.router.navigate([
+        '/resultados-de-busqueda',
+        this.buscar.replace(/ /gi, '%20'),
+      ]);
     } else {
       alert('Ingrese una busqueda');
     }

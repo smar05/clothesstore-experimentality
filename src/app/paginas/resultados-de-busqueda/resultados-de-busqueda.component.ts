@@ -16,21 +16,22 @@ export class ResultadosDeBusquedaComponent implements OnInit {
     private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
     this.buscarProductos();
   }
 
   public buscarProductos(): void {
-    if (this.route.snapshot.paramMap.get('busqueda')) {
+    if (this.route.snapshot.paramMap.get('busqueda') != '') {
       this.busqueda = this.route.snapshot.paramMap.get('busqueda');
       this.apiService
-        .getBusqueda(this.busqueda.replace(/ /gi, '%20'))
+        .getBusqueda(this.busqueda, 'busqueda')
         .then((data) => {
           this.publicaciones = data.results;
           console.log(data);
-
           this.loading = false;
         })
         .catch((err) => {
@@ -39,6 +40,22 @@ export class ResultadosDeBusquedaComponent implements OnInit {
         });
     } else {
       this.router.navigate(['/home']);
+    }
+  }
+
+  public masProductos() {
+    if (this.busqueda != '') {
+      this.apiService
+        .masPublicaciones(this.busqueda)
+        .then((data) => {
+          this.publicaciones.push.apply(data.results);
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err.status);
+          alert('Error Status: ' + err.status);
+        });
+      this.loading = false;
     }
   }
 }

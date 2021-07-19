@@ -191,6 +191,20 @@ a {
   animation: fade 0.5s;
 }
 
+.cargarMas {
+  top: 46px;
+  left: 1632px;
+  width: 148px;
+  height: 44px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #000000;
+  opacity: 1;
+}
+
+.cargarMas :active {
+  background: #eeeeee 0% 0% no-repeat padding-box;
+}
+
 @keyframes fade {
   0% {
     opacity: 0;

@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   public publicacionesDestacadas: any = [];
   public loading = true;
-  public categoria = 'Mujeres';
+  public categoria = 'MCO1430';
 
   constructor(private servicio: ApiService) {}
 
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   public buscarProductos(): void {
     this.servicio
-      .getBusqueda(this.categoria.replace(/ /gi, '%20'))
+      .getBusqueda(this.categoria.replace(/ /gi, '%20'), 'categoria')
       .then((data) => {
         this.publicacionesDestacadas = data.results;
         console.log(data);
