@@ -16,29 +16,29 @@ export class ApiService {
 
   public cart: any = [];
   public contador: number = 0;
+  private urlBusqueda: string = '';
 
   constructor(private http: HttpClient) {}
 
   public getBusqueda(busqueda: string, parametro: string): Promise<any> {
-    var urlBusqueda = '';
-    if (parametro == 'categoria') {
-      urlBusqueda = this.urlCategorias + busqueda + '&limit=6';
-    } else if (parametro == 'busqueda') {
-      urlBusqueda = this.urlItems + busqueda;
+    this.urlBusqueda = '';
+    if (parametro == 'home') {
+      this.urlBusqueda = this.urlCategorias + busqueda + '&limit=6';
+    } else if (parametro == 'otros') {
+      this.urlBusqueda = this.urlItems + busqueda;
+    } else if (parametro == 'MCO1430') {
+      this.urlBusqueda = this.urlItems + busqueda + '&category=' + parametro;
     }
     return this.http
-      .get(urlBusqueda, { headers: this.httpHeaders })
+      .get(this.urlBusqueda, { headers: this.httpHeaders })
       .toPromise();
   }
 
-  public masPublicaciones(busqueda: string): Promise<any> {
-    var urlBusqueda = '';
-    console.log(busqueda);
-
+  public masPublicaciones(): Promise<any> {
     this.contador += 51;
-    urlBusqueda = `${this.urlCategorias + busqueda}&offset=${this.contador}`;
+    this.urlBusqueda += `&offset=${this.contador}`;
     return this.http
-      .get(urlBusqueda, { headers: this.httpHeaders })
+      .get(this.urlBusqueda, { headers: this.httpHeaders })
       .toPromise();
   }
 }

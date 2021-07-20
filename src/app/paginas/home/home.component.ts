@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   public buscarProductos(): void {
     this.servicio
-      .getBusqueda(this.categoria.replace(/ /gi, '%20'), 'categoria')
+      .getBusqueda(this.categoria.replace(/ /gi, '%20'), 'home')
       .then((data) => {
         this.publicacionesDestacadas = data.results;
         console.log(data);

@@ -12,7 +12,7 @@
   </div>
 </section>
 
-<section id="productos">
+<section id="productos" *ngIf="!loading">
   <ul id="autoWidth" class="cs-hidden">
     <li class="item-a" *ngFor="let publicacion of publicaciones">
       <a>
@@ -32,7 +32,7 @@
                 >ENVIO GRATIS</span
               >
             </div>
-            <a href="#" class="price">{{
+            <a class="price">{{
               publicacion.price | currency: "$":true:"1.0-0"
             }}</a>
           </div>

@@ -31,6 +31,7 @@ export class ShoppingCartComponent implements OnInit {
 
   public eliminar(id: number): void {
     this.cart.splice(id, 1);
+    this.calcularTotal();
   }
 
   async modificarCantidad(id: number) {

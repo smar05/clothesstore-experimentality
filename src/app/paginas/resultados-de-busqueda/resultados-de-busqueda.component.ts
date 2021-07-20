@@ -10,7 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class ResultadosDeBusquedaComponent implements OnInit {
   public publicaciones: any = [];
-  public busqueda: any = '';
+  public busqueda: string = '';
+  public categoria: string = '';
   public loading: boolean = true;
 
   constructor(
@@ -28,11 +29,11 @@ export class ResultadosDeBusquedaComponent implements OnInit {
   public buscarProductos(): void {
     if (this.route.snapshot.paramMap.get('busqueda') != '') {
       this.busqueda = this.route.snapshot.paramMap.get('busqueda');
+      this.categoria = this.route.snapshot.paramMap.get('categoria');
       this.apiService
-        .getBusqueda(this.busqueda, 'busqueda')
+        .getBusqueda(this.busqueda, this.categoria)
         .then((data) => {
           this.publicaciones = data.results;
-          console.log(data);
           this.loading = false;
         })
         .catch((err) => {
@@ -45,19 +46,18 @@ export class ResultadosDeBusquedaComponent implements OnInit {
   }
 
   public masProductos(): void {
-    if (this.busqueda != '') {
-      this.apiService
-        .masPublicaciones(this.busqueda)
-        .then((data) => {
-          this.publicaciones.push.apply(data.results);
-          console.log(data);
-        })
-        .catch((err) => {
-          console.log(err.status);
-          alert('Error Status: ' + err.status);
-        });
-      this.loading = false;
-    }
+    this.publicaciones = [];
+    this.loading = true;
+    this.apiService
+      .masPublicaciones()
+      .then((data) => {
+        this.publicaciones = data.results;
+        this.loading = false;
+      })
+      .catch((err) => {
+        console.log(err.status);
+        alert('Error Status: ' + err.status);
+      });
   }
 
   async agregarCarrito(publicacion: any) {
