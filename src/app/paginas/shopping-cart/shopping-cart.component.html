@@ -1,0 +1,124 @@
+<ng-container *ngIf="cart.length == 0">
+  <section id="datos">
+    <div class="container">
+      <div class="title" style="text-align: center; padding: 20px 20px">
+        Agregue productos al carrito
+      </div>
+    </div>
+  </section>
+</ng-container>
+
+<ng-container *ngIf="cart.length > 0">
+  <section id="datos">
+    <div class="container">
+      <div class="title">Datos de envio</div>
+      <form [formGroup]="formulario">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nombre</span>
+            <input
+              type="text"
+              placeholder="Ingrese su nombre"
+              formControlName="nombre"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Correo</span>
+            <input
+              type="email"
+              placeholder="Ingrese su correo"
+              formControlName="correo"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Numero de celular</span>
+            <input
+              type="number"
+              placeholder="Ingrese su numero"
+              formControlName="celular"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Departamento</span>
+            <input
+              type="text"
+              placeholder="Ingrese su Departamento"
+              formControlName="departamento"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Ciudad</span>
+            <input
+              type="text"
+              placeholder="Ingrese su ciudad"
+              formControlName="ciudad"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Direccion</span>
+            <input
+              type="text"
+              placeholder="Ingrese su direccion"
+              formControlName="direccion"
+            />
+          </div>
+        </div>
+        <div class="button" (click)="solicitarPedido()">
+          <input
+            type="submit"
+            value="Solicitar pedido"
+            [disabled]="!formulario.valid"
+          />
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="carrito">
+    <div class="container cart-page">
+      <table>
+        <tr>
+          <th>Produto</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+        <tr *ngFor="let producto of cart; let i = index">
+          <td>
+            <div class="cart-info">
+              <img [src]="producto.thumbnail" alt="" />
+              <div>
+                <p>{{ producto.title }}</p>
+                <small
+                  >Precio:
+                  {{ producto.price | currency: "$":true:"1.0-0" }}</small
+                >
+                <a (click)="eliminar(i)">Eliminar</a>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input
+              (click)="modificarCantidad(i)"
+              type="submit"
+              [(ngModel)]="producto.cantidad"
+            />
+          </td>
+          <td>
+            {{
+              producto.price * producto.cantidad | currency: "$":true:"1.0-0"
+            }}
+          </td>
+        </tr>
+      </table>
+
+      <div class="total-price">
+        <table>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td>{{ total | currency: "$":true:"1.0-0" }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+</ng-container>

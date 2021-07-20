@@ -1,3 +1,4 @@
+import { ShoppingCartComponent } from './paginas/shopping-cart/shopping-cart.component';
 import { ResultadosDeBusquedaComponent } from './paginas/resultados-de-busqueda/resultados-de-busqueda.component';
 import { HomeComponent } from './paginas/home/home.component';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ const routes: Routes = [
     path: 'resultados-de-busqueda/:busqueda',
     component: ResultadosDeBusquedaComponent,
   },
+  { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 

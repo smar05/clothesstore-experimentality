@@ -15,17 +15,19 @@
 <section id="productos">
   <ul id="autoWidth" class="cs-hidden">
     <li class="item-a" *ngFor="let publicacion of publicaciones">
-      <a [href]="publicacion.permalink">
+      <a>
         <div class="box">
           <div class="slide-img">
             <img [src]="publicacion.thumbnail" alt="" />
-            <div class="overlay">
-              <a href="#" class="buy-btn"></a>
+            <div>
+              <a (click)="agregarCarrito(publicacion)" class="buy-btn"
+                >Añadir al carrito</a
+              >
             </div>
           </div>
           <div class="detail-box">
             <div class="type">
-              <a href="#">{{ publicacion.title }}</a>
+              <a [href]="publicacion.permalink">{{ publicacion.title }}</a>
               <span *ngIf="publicacion.shipping.free_shipping"
                 >ENVIO GRATIS</span
               >

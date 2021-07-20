@@ -31,4 +31,9 @@ export class NavbarComponent implements OnInit {
       alert('Ingrese una busqueda');
     }
   }
+
+  public irCarrito(): void {
+    this.mostrarMenu();
+    this.router.navigate(['/shopping-cart']);
+  }
 }

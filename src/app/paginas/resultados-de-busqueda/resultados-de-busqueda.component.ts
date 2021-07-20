@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-resultados-de-busqueda',
@@ -43,7 +44,7 @@ export class ResultadosDeBusquedaComponent implements OnInit {
     }
   }
 
-  public masProductos() {
+  public masProductos(): void {
     if (this.busqueda != '') {
       this.apiService
         .masPublicaciones(this.busqueda)
@@ -56,6 +57,22 @@ export class ResultadosDeBusquedaComponent implements OnInit {
           alert('Error Status: ' + err.status);
         });
       this.loading = false;
+    }
+  }
+
+  async agregarCarrito(publicacion: any) {
+    const { value: cantidad } = await Swal.fire({
+      title: 'Agregar al carrito',
+      input: 'number',
+      inputLabel: 'Ingrese la cantidad',
+      inputPlaceholder: 'Ingrese la cantidad',
+    });
+    if (cantidad != null && cantidad > 0) {
+      publicacion.cantidad = cantidad;
+      this.apiService.cart.push(publicacion);
+      Swal.fire(`Cantidad agregada: ${cantidad}`);
+    } else {
+      alert('Ingrese una cantidad');
     }
   }
 }

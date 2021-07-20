@@ -11,7 +11,6 @@
     </div>
     <ol>
       <li>
-        <a href="#"><i class="fas fa-shopping-cart"></i></a>
         <a href="#" class="desaparece"><i class="fas fa-user"></i></a>
         <a href="#" class="desaparece"
           ><button class="iniciarSesion">Iniciar Sesion</button></a
@@ -25,6 +24,11 @@
 
   <nav class="menu2">
     <ol>
+      <li>
+        <a [ngClass]="{ desaparece: mostrar }" (click)="irCarrito()"
+          ><i class="fas fa-shopping-cart"></i
+        ></a>
+      </li>
       <li><a href="#" [ngClass]="{ desaparece: mostrar }">Hombre</a></li>
       <li><a href="#" [ngClass]="{ desaparece: mostrar }">Mujer</a></li>
       <li><a href="#" [ngClass]="{ desaparece: mostrar }">Junior</a></li>

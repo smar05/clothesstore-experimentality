@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +14,7 @@ export class ApiService {
     Authorization: 'Bearer NMaEapX6CAvGF4wijG8ODM4NFnI4dUVe',
   });
 
+  public cart: any = [];
   public contador: number = 0;
 
   constructor(private http: HttpClient) {}
@@ -22,7 +22,7 @@ export class ApiService {
   public getBusqueda(busqueda: string, parametro: string): Promise<any> {
     var urlBusqueda = '';
     if (parametro == 'categoria') {
-      urlBusqueda = this.urlCategorias + busqueda + '&limit=4';
+      urlBusqueda = this.urlCategorias + busqueda + '&limit=6';
     } else if (parametro == 'busqueda') {
       urlBusqueda = this.urlItems + busqueda;
     }
